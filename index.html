@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Usama Bin Sadiq — Senior Software Engineer</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        /* ─────────────────── TOKENS ─────────────────── */
+        :root {
+            --bg: #07090f;
+            --bg2: #0b0f19;
+            --bg3: #0f141f;
+            --surf: rgba(255, 255, 255, .03);
+            --bdr: rgba(255, 255, 255, .07);
+            --bhi: rgba(196, 160, 80, .28);
+            --gold: #c4a050;
+            --gold-lt: #e2bf68;
+            --gold-d: rgba(196, 160, 80, .12);
+            --txt: #e5e9f2;
+            --t2: rgba(229, 233, 242, .52);
+            --t3: rgba(229, 233, 242, .28);
+            --green: #4caf7a;
+            --blue: #4878a0;
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--txt);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 300;
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        /* noise removed */
+        /* ambient */
+        .amb {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            border-radius: 50%;
+            filter: blur(110px);
+        }
+
+        .a1 {
+            width: 600px;
+            height: 600px;
+            top: -160px;
+            right: -60px;
+            background: radial-gradient(circle, #35607a, transparent 70%);
+            opacity: .08;
+        }
+
+        .a2 {
+            width: 400px;
+            height: 400px;
+            bottom: 8%;
+            left: -100px;
+            background: radial-gradient(circle, #c4a050, transparent 70%);
+            opacity: .045;
+        }
+
+        /* ─────────────────── NAV ─────────────────── */
+        nav {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            z-index: 900;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 56px;
+            height: 66px;
+            background: rgba(7, 9, 15, .92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--bdr);
+            transition: border-color .35s;
+        }
+
+        nav.scrolled {
+            border-color: var(--bhi);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.18rem;
+            font-weight: 600;
+            letter-spacing: .4px;
+            color: var(--gold);
+            white-space: nowrap;
+        }
+
+        .nav-logo span {
+            color: var(--t2);
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 38px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: .68rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--t3);
+            text-decoration: none;
+            transition: color .22s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .28s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .nav-cta {
+            font-size: .66rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--bg);
+            background: var(--gold);
+            padding: 8px 20px;
+            transition: background .22s, transform .18s;
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold-lt);
+            transform: translateY(-1px);
+        }
+
+        /* hamburger */
+        .ham {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .ham span {
+            display: block;
+            width: 22px;
+            height: 1.5px;
+            background: var(--t2);
+            transition: all .28s;
+        }
+
+        .ham.open span:nth-child(1) {
+            transform: translateY(6.5px) rotate(45deg);
+        }
+
+        .ham.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .ham.open span:nth-child(3) {
+            transform: translateY(-6.5px) rotate(-45deg);
+        }
+
+        /* mobile menu */
+        .mob-menu {
+            display: none;
+            position: fixed;
+            inset: 66px 0 0 0;
+            z-index: 800;
+            background: rgba(7, 9, 15, .97);
+            backdrop-filter: blur(20px);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 36px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s;
+        }
+
+        .mob-menu.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mob-menu a {
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--t2);
+            text-decoration: none;
+            transition: color .22s;
+        }
+
+        .mob-menu a:hover {
+            color: var(--gold);
+        }
+
+        .mob-menu .mob-cta {
+            font-size: .78rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--bg);
+            background: var(--gold);
+            padding: 12px 32px;
+            margin-top: 8px;
+        }
+
+        /* ─────────────────── HERO ─────────────────── */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 56px 72px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-wrap {
+            max-width: 1120px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 72px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'DM Mono', monospace;
+            font-size: .6rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: rise .7s .1s forwards;
+        }
+
+        .eyebrow::before {
+            content: '';
+            width: 26px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+            font-weight: 600;
+            line-height: 1;
+            letter-spacing: -1px;
+            color: var(--txt);
+            margin-bottom: 16px;
+            opacity: 0;
+            animation: rise .7s .25s forwards;
+        }
+
+        h1 em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--t2);
+        }
+
+        .h-role {
+            font-size: .82rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--t2);
+            margin-bottom: 28px;
+            opacity: 0;
+            animation: rise .7s .4s forwards;
+        }
+
+        .h-desc {
+            font-size: .95rem;
+            line-height: 1.9;
+            color: var(--t2);
+            max-width: 500px;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: rise .7s .55s forwards;
+        }
+
+        .h-btns {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: rise .7s .7s forwards;
+        }
+
+        .btn-gold {
+            font-size: .66rem;
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 12px 28px;
+            background: var(--gold);
+            color: var(--bg);
+            border: 1px solid var(--gold);
+            transition: background .22s, transform .18s, box-shadow .22s;
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-lt);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(196, 160, 80, .22);
+        }
+
+        .btn-ghost {
+            font-size: .66rem;
+            font-weight: 400;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 12px 28px;
+            border: 1px solid var(--bdr);
+            color: var(--t2);
+            transition: border-color .22s, color .22s, transform .18s;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        /* profile card */
+        .pcard {
+            background: var(--surf);
+            border: 1px solid var(--bdr);
+            padding: 34px;
+            position: relative;
+            opacity: 0;
+            animation: rise .7s .4s forwards;
+        }
+
+        .pcard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--blue), transparent);
+        }
+
+        .pc-lbl {
+            font-family: 'DM Mono', monospace;
+            font-size: .56rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 22px;
+        }
+
+        .pc-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            padding: 11px 0;
+            border-bottom: 1px solid var(--bdr);
+        }
+
+        .pc-row:last-of-type {
+            border-bottom: none;
+        }
+
+        .pc-k {
+            font-family: 'DM Mono', monospace;
+            font-size: .56rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--t3);
+            flex-shrink: 0;
+        }
+
+        .pc-v {
+            font-size: .82rem;
+            color: var(--txt);
+            text-align: right;
+            font-weight: 400;
+            word-break: break-all;
+        }
+
+        .pc-v.g {
+            color: var(--gold);
+        }
+
+        .pc-v.av {
+            color: var(--green);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .pc-v.av::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 7px rgba(76, 175, 122, .5);
+            animation: blink 2s ease-in-out infinite;
+        }
+
+        /* ─────────────────── SECTION SHELL ─────────────────── */
+        .sw {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 88px 56px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .sh {
+            margin-bottom: 52px;
+        }
+
+        .sn {
+            font-family: 'DM Mono', monospace;
+            font-size: .56rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .st {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+            font-weight: 500;
+            color: var(--txt);
+            line-height: 1.1;
+        }
+
+        .sr {
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+            margin-top: 16px;
+        }
+
+        /* ─────────────────── ABOUT ─────────────────── */
+        .about-g {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .a-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.32rem;
+            font-weight: 400;
+            line-height: 1.68;
+            color: var(--t2);
+            margin-bottom: 22px;
+            font-style: italic;
+        }
+
+        .a-body {
+            font-size: .91rem;
+            line-height: 1.92;
+            color: var(--t2);
+        }
+
+        .a-body p {
+            margin-bottom: 16px;
+        }
+
+        .a-body strong {
+            color: var(--txt);
+            font-weight: 500;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--bdr);
+            border: 1px solid var(--bdr);
+        }
+
+        .stat {
+            background: var(--bg2);
+            padding: 30px 24px;
+            transition: background .28s;
+        }
+
+        .stat:hover {
+            background: var(--bg3);
+        }
+
+        .stat-n {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-l {
+            font-size: .65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--t3);
+        }
+
+        .edu {
+            margin-top: 24px;
+            padding: 24px 24px 24px 28px;
+            background: var(--surf);
+            border: 1px solid var(--bdr);
+            position: relative;
+        }
+
+        .edu::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gold);
+        }
+
+        .edu-d {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: var(--txt);
+            margin-bottom: 4px;
+        }
+
+        .edu-u {
+            font-size: .8rem;
+            color: var(--t2);
+            margin-bottom: 4px;
+        }
+
+        .edu-c {
+            font-size: .75rem;
+            color: var(--t3);
+            margin-bottom: 6px;
+            line-height: 1.65;
+        }
+
+        .edu-y {
+            font-family: 'DM Mono', monospace;
+            font-size: .56rem;
+            letter-spacing: 2px;
+            color: var(--gold);
+        }
+
+        /* ─────────────────── EXPERIENCE ─────────────────── */
+        .exp-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .ei {
+            background: var(--bg2);
+            border: 1px solid var(--bdr);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity .5s, transform .5s, border-color .28s;
+        }
+
+        .ei.vis {
+            opacity: 1;
+            transform: none;
+        }
+
+        .ei:hover {
+            border-color: var(--bhi);
+        }
+
+        .ei-top {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 16px;
+            align-items: start;
+            padding: 32px 36px 22px;
+        }
+
+        .ei-co {
+            font-family: 'DM Mono', monospace;
+            font-size: .56rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+
+        .ei-role {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--txt);
+            margin-bottom: 3px;
+        }
+
+        .ei-loc {
+            font-size: .76rem;
+            color: var(--t3);
+        }
+
+        .ei-date {
+            font-family: 'DM Mono', monospace;
+            font-size: .56rem;
+            letter-spacing: 1.5px;
+            color: var(--t3);
+            white-space: nowrap;
+            text-align: right;
+            padding: 5px 12px;
+            border: 1px solid var(--bdr);
+            background: var(--surf);
+            margin-top: 2px;
+            line-height: 1.6;
+        }
+
+        .ei-body {
+            padding: 0 36px 28px;
+        }
+
+        .ei-body>p {
+            font-size: .88rem;
+            line-height: 1.9;
+            color: var(--t2);
+            margin-bottom: 20px;
+        }
+
+        .ei-pts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 18px;
+            margin-bottom: 22px;
+        }
+
+        .pt {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            font-size: .78rem;
+            line-height: 1.58;
+            color: var(--t2);
+        }
+
+        .pt::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--gold);
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .ei-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .pill {
+            font-family: 'DM Mono', monospace;
+            font-size: .55rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            background: rgba(196, 160, 80, .06);
+            border: 1px solid rgba(196, 160, 80, .18);
+            color: rgba(196, 160, 80, .72);
+        }
+
+        /* ─────────────────── SKILLS ─────────────────── */
+        .sk-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            background: var(--bdr);
+            border: 1px solid var(--bdr);
+        }
+
+        .sg {
+            background: var(--bg2);
+            padding: 36px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity .5s, transform .5s;
+        }
+
+        .sg.vis {
+            opacity: 1;
+            transform: none;
+        }
+
+        .sg-t {
+            font-family: 'DM Mono', monospace;
+            font-size: .56rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 24px;
+            padding-bottom: 13px;
+            border-bottom: 1px solid var(--bdr);
+        }
+
+        .sk {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .sk-n {
+            font-size: .84rem;
+            color: var(--t2);
+            font-weight: 400;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .sk-tr {
+            width: 100px;
+            height: 1px;
+            background: var(--bdr);
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .sk-f {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--gold-lt));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 1.1s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .sg.vis .sk-f {
+            transform: scaleX(1);
+        }
+
+        .sk-p {
+            font-family: 'DM Mono', monospace;
+            font-size: .56rem;
+            color: var(--t3);
+            width: 22px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        /* ─────────────────── CONTACT ─────────────────── */
+        .ct-g {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .ct-lead {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.22rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--t2);
+            line-height: 1.75;
+            margin-bottom: 36px;
+        }
+
+        .ct-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--bdr);
+            text-decoration: none;
+            color: var(--txt);
+            transition: padding .22s;
+        }
+
+        .ct-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .ct-item:hover {
+            padding-left: 8px;
+        }
+
+        .ct-item:hover .ct-lbl {
+            color: var(--gold);
+        }
+
+        .ct-icon {
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--bdr);
+            font-size: .82rem;
+            flex-shrink: 0;
+            transition: border-color .22s, background .22s;
+        }
+
+        .ct-item:hover .ct-icon {
+            border-color: var(--gold);
+            background: var(--gold-d);
+        }
+
+        .ct-type {
+            font-family: 'DM Mono', monospace;
+            font-size: .53rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--t3);
+            margin-bottom: 2px;
+        }
+
+        .ct-lbl {
+            font-size: .84rem;
+            color: var(--t2);
+            transition: color .22s;
+        }
+
+        .why {
+            padding: 36px;
+            background: var(--bg3);
+            border: 1px solid var(--bdr);
+            position: relative;
+        }
+
+        .why::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+
+        .why-t {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.22rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .why-b {
+            font-size: .84rem;
+            line-height: 1.92;
+            color: var(--t2);
+            margin-bottom: 24px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .tag {
+            font-size: .66rem;
+            letter-spacing: 1px;
+            padding: 5px 12px;
+            border: 1px solid var(--bdr);
+            color: var(--t3);
+            transition: border-color .22s, color .22s;
+        }
+
+        .tag:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* ─────────────────── FOOTER ─────────────────── */
+        footer {
+            position: relative;
+            z-index: 10;
+            padding: 26px 56px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-top: 1px solid var(--bdr);
+            font-family: 'DM Mono', monospace;
+            font-size: .56rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--t3);
+        }
+
+        /* ─────────────────── SECTION BG STRIPS ─────────────────── */
+        .bg2-strip {
+            background: var(--bg2);
+            border-top: 1px solid var(--bdr);
+        }
+
+        /* ─────────────────── ANIMATIONS ─────────────────── */
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .2;
+            }
+        }
+
+        /* ─────────────────── RESPONSIVE ─────────────────── */
+
+        /* Tablet ≤ 1024px */
+        @media(max-width:1024px) {
+            nav {
+                padding: 0 32px;
+            }
+
+            .nav-links {
+                gap: 28px;
+            }
+
+            .sw {
+                padding: 72px 32px;
+            }
+
+            #hero {
+                padding: 100px 32px 64px;
+            }
+
+            .hero-wrap {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .pcard {
+                display: none;
+            }
+
+            .about-g {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .ct-g {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .sk-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .ei-pts {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Mobile ≤ 768px */
+        @media(max-width:768px) {
+            nav {
+                padding: 0 20px;
+                height: 60px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .ham {
+                display: flex;
+            }
+
+            .mob-menu {
+                display: flex;
+                top: 60px;
+            }
+
+            .sw {
+                padding: 60px 20px;
+            }
+
+            #hero {
+                padding: 88px 20px 56px;
+                min-height: auto;
+            }
+
+            h1 {
+                font-size: clamp(2.4rem, 10vw, 3.6rem);
+            }
+
+            .h-role {
+                letter-spacing: 2.5px;
+                font-size: .78rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat {
+                padding: 24px 18px;
+            }
+
+            .stat-n {
+                font-size: 2.4rem;
+            }
+
+            .ei-top {
+                grid-template-columns: 1fr;
+                padding: 24px 20px 16px;
+            }
+
+            .ei-date {
+                text-align: left;
+                display: inline-block;
+            }
+
+            .ei-body {
+                padding: 0 20px 22px;
+            }
+
+            .ei-pts {
+                grid-template-columns: 1fr;
+            }
+
+            .sk-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .sg {
+                padding: 28px 20px;
+            }
+
+            .ct-g {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            footer {
+                padding: 22px 20px;
+                flex-direction: column;
+                text-align: center;
+                gap: 6px;
+            }
+
+            .h-btns {
+                flex-direction: column;
+            }
+
+            .btn-gold,
+            .btn-ghost {
+                text-align: center;
+            }
+        }
+
+        /* Small mobile ≤ 480px */
+        @media(max-width:480px) {
+            .about-g {
+                gap: 32px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .edu {
+                padding: 20px 20px 20px 22px;
+            }
+
+            .sk-tr {
+                width: 80px;
+            }
+
+            .why {
+                padding: 24px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="amb a1"></div>
+    <div class="amb a2"></div>
+
+    <!-- ── NAV ── -->
+    <nav id="nav">
+        <div class="nav-logo">Usama <span>Bin Sadiq</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="mailto:osama.gormani@gmail.com" class="nav-cta">Hire Me</a>
+        <button class="ham" id="ham" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="mob-menu" id="mob-menu">
+        <a href="#about" class="mob-link">About</a>
+        <a href="#experience" class="mob-link">Experience</a>
+        <a href="#skills" class="mob-link">Skills</a>
+        <a href="#contact" class="mob-link">Contact</a>
+        <a href="mailto:osama.gormani@gmail.com" class="mob-cta">Hire Me</a>
+    </div>
+
+    <!-- ── HERO ── -->
+    <section id="hero">
+        <div class="hero-wrap">
+            <div>
+                <div class="eyebrow">Senior Software Engineer</div>
+                <h1>Usama <em>Bin</em><br>Sadiq</h1>
+                <p class="h-role">Node.js · NestJS · Express.js · TypeScript · Backend Architecture</p>
+                <p class="h-desc">
+                    Backend Developer focused on building scalable and maintainable server-side applications. Hands-on
+                    experience developing RESTful APIs, microservices, and robust backend systems that are efficient,
+                    reliable, and production-ready — spanning fintech, blockchain, and international e-commerce.
+                </p>
+                <div class="h-btns">
+                    <a href="mailto:osama.gormani@gmail.com" class="btn-gold">Get in Touch</a>
+                    <a href="#experience" class="btn-ghost">View Experience</a>
+                </div>
+            </div>
+
+            <div class="pcard">
+                <div class="pc-lbl">// Profile</div>
+                <div class="pc-row"><span class="pc-k">Status</span><span class="pc-v av">Available</span></div>
+                <div class="pc-row"><span class="pc-k">Location</span><span class="pc-v">Islamabad, Pakistan</span>
+                </div>
+                <div class="pc-row"><span class="pc-k">Remote</span><span class="pc-v g">Open</span></div>
+                <div class="pc-row"><span class="pc-k">Phone</span><span class="pc-v">+92 336 761 8300</span></div>
+                <div class="pc-row"><span class="pc-k">Email</span><span class="pc-v"
+                        style="font-size:.72rem;">osama.gormani@gmail.com</span></div>
+                <div class="pc-row"><span class="pc-k">LinkedIn</span><span class="pc-v"
+                        style="font-size:.72rem;">in/usamagormani</span></div>
+                <div class="pc-row"><span class="pc-k">Core Stack</span><span class="pc-v g">NestJS · Node.js</span>
+                </div>
+                <div class="pc-row"><span class="pc-k">Database</span><span class="pc-v">PostgreSQL · MongoDB</span>
+                </div>
+                <div class="pc-row"><span class="pc-k">Degree</span><span class="pc-v">BS Computer Science</span></div>
+                <div class="pc-row"><span class="pc-k">University</span><span class="pc-v">FAST-NUCES</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── ABOUT ── -->
+    <section id="about" style="position:relative;z-index:10;">
+        <div class="sw">
+            <div class="sh">
+                <span class="sn">01 — About</span>
+                <h2 class="st">Backend Developer &amp; Architect</h2>
+                <span class="sr"></span>
+            </div>
+            <div class="about-g">
+                <div>
+                    <p class="a-quote">"I enjoy solving complex backend challenges, writing clean code, and contributing
+                        to meaningful products."</p>
+                    <div class="a-body">
+                        <p>I'm a <strong>Backend Developer</strong> focused on building scalable and maintainable
+                            server-side applications using <strong>Node.js, NestJS, and Express.js</strong>. I have
+                            hands-on experience developing RESTful APIs, microservices, and robust backend systems that
+                            are efficient, reliable, and production-ready.</p>
+                        <p>My work spans both <strong>relational and non-relational databases</strong>, with a strong
+                            understanding of API integrations and backend architecture. I'm passionate about backend
+                            systems that demand performance, structure, and real-world scalability.</p>
+                        <p>I'm currently looking for backend development roles where I can work on impactful projects,
+                            contribute to high-performing teams, and grow deeper into backend architecture and
+                            engineering. Open to both <strong>remote and on-site</strong> opportunities.</p>
+                    </div>
+                    <div class="edu">
+                        <div class="edu-d">Bachelor of Science in Computer Science</div>
+                        <div class="edu-u">National University of Computer and Emerging Sciences (FAST-NUCES), Pakistan
+                        </div>
+                        <div class="edu-c">Coursework: Web Programming · Data Structures · Design &amp; Analysis of
+                            Algorithms · Database Systems · Software Engineering · Machine Learning</div>
+                        <div class="edu-y">// January 2018 — June 2022</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-n">3+</div>
+                            <div class="stat-l">Years Experience</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-n">4</div>
+                            <div class="stat-l">Companies</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-n">2</div>
+                            <div class="stat-l">Countries</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-n">10+</div>
+                            <div class="stat-l">Technologies</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── EXPERIENCE ── -->
+    <section id="experience" class="bg2-strip" style="position:relative;z-index:10;">
+        <div class="sw">
+            <div class="sh">
+                <span class="sn">02 — Experience</span>
+                <h2 class="st">Professional History</h2>
+                <span class="sr"></span>
+            </div>
+            <div class="exp-list">
+
+                <!-- DoAZ -->
+                <div class="ei">
+                    <div class="ei-top">
+                        <div>
+                            <div class="ei-co">doAZ · Seoul, South Korea</div>
+                            <div class="ei-role">Senior Software Engineer</div>
+                            <div class="ei-loc">International E-Commerce · SaaS Platform</div>
+                        </div>
+                        <div class="ei-date">Nov 2024 — Present<br>1 yr 5 mos</div>
+                    </div>
+                    <div class="ei-body">
+                        <p>Leading backend system development focused on performance, security, and scalability to
+                            support international e-commerce operations. Work involves payment integration, database
+                            optimisation, and developer enablement.</p>
+                        <div class="ei-pts">
+                            <div class="pt">Architected modular RESTful APIs with NestJS using dependency injection,
+                                module-based architecture, and clearly separated Controllers, Services, and middleware
+                                layers with centralised error handling</div>
+                            <div class="pt">Designed and optimised PostgreSQL relational schemas with advanced joins,
+                                indexes, and transactions, supporting complex multi-tenant workflows</div>
+                            <div class="pt">Implemented JWT-based authentication and role-based access control (RBAC)
+                                using NestJS Guards and Pipes for secure user and admin endpoints</div>
+                            <div class="pt">Integrated Redis caching with NestJS interceptors to accelerate
+                                high-frequency API calls and reduce backend latency</div>
+                            <div class="pt">Developed AWS S3 object storage pipelines with multipart uploads and
+                                presigned URLs, enabling large file uploads and efficient retrieval</div>
+                            <div class="pt">Integrated PayPal and Portone (South Korea) payment systems, enabling
+                                multiple payment methods across global regions</div>
+                            <div class="pt">Authored and optimised Dockerfiles, reducing container size and build time,
+                                improving CI/CD pipeline efficiency and deployment speed</div>
+                            <div class="pt">Built scalable React frontend modules with hooks, context API, and Redux for
+                                consistent state synchronisation with backend APIs</div>
+                            <div class="pt">Conducted code reviews, mentored junior developers, and improved Git-based
+                                development workflows for better collaboration and code quality</div>
+                        </div>
+                        <div class="ei-stack">
+                            <span class="pill">Node.js</span><span class="pill">NestJS</span><span
+                                class="pill">PostgreSQL</span>
+                            <span class="pill">Redis</span><span class="pill">Docker</span><span class="pill">AWS
+                                S3</span>
+                            <span class="pill">PayPal</span><span class="pill">Portone</span><span
+                                class="pill">React</span><span class="pill">Redux</span><span class="pill">Git</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ChainGPT -->
+                <div class="ei">
+                    <div class="ei-top">
+                        <div>
+                            <div class="ei-co">ChainGPT</div>
+                            <div class="ei-role">Back End Developer</div>
+                            <div class="ei-loc">AI-Powered Blockchain Platform</div>
+                        </div>
+                        <div class="ei-date">Aug 2023 — Dec 2024<br>1 yr 5 mos</div>
+                    </div>
+                    <div class="ei-body">
+                        <p>Engineered blockchain-integrated backend systems and scalable APIs using NestJS and Node.js,
+                            with a strong focus on smart contract interaction, secure payment processing, and
+                            performance optimisation.</p>
+                        <div class="ei-pts">
+                            <div class="pt">Integrated Ethereum smart contracts using Ether.js — implementing token burn
+                                functionality and ensuring secure, transparent on-chain operations</div>
+                            <div class="pt">Developed and integrated Stripe payment workflows enabling secure global
+                                transactions, including webhook handling, error validation, and financial record
+                                consistency</div>
+                            <div class="pt">Built and maintained high-performance backend services using NestJS and
+                                Node.js following modular, testable design patterns for scalability and maintainability
+                            </div>
+                            <div class="pt">Enhanced performance through indexing in MySQL and MongoDB, and implemented
+                                Redis caching for frequently accessed data, reducing latency and improving response
+                                times</div>
+                            <div class="pt">Used Docker to containerise services across multiple environments, ensuring
+                                consistent builds, eliminating configuration drift, and enabling faster deployments
+                            </div>
+                            <div class="pt">Implemented robust request validation and centralised error handling across
+                                all APIs, improving system stability and reducing production downtime</div>
+                        </div>
+                        <div class="ei-stack">
+                            <span class="pill">NestJS</span><span class="pill">Node.js</span><span
+                                class="pill">Ether.js</span>
+                            <span class="pill">MySQL</span><span class="pill">MongoDB</span><span
+                                class="pill">Redis</span>
+                            <span class="pill">Docker</span><span class="pill">Stripe</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Funavry -->
+                <div class="ei">
+                    <div class="ei-top">
+                        <div>
+                            <div class="ei-co">Funavry Technologies · Islamabad, Pakistan</div>
+                            <div class="ei-role">Associate Software Engineer → Software Engineer</div>
+                            <div class="ei-loc">Blockchain &amp; Fintech · Multi-Region Payment Applications</div>
+                        </div>
+                        <div class="ei-date">Apr 2023 — Dec 2024<br>1 yr 9 mos</div>
+                    </div>
+                    <div class="ei-body">
+                        <p>Focused on payment integration, blockchain smart contracts, and performance optimisation
+                            across diverse applications and markets. Responsible for end-to-end backend design,
+                            third-party API integrations, and React frontend modules.</p>
+                        <div class="ei-pts">
+                            <div class="pt">Structured NestJS-based APIs to interact with blockchain smart contracts —
+                                implementing transaction handling, token burning mechanisms, and secure data flows via
+                                Ether.js</div>
+                            <div class="pt">Managed Stripe payment gateway for subscription and one-time payments,
+                                including sessions, webhooks, and maintaining data integrity across all payment records
+                            </div>
+                            <div class="pt">Integrated Stripe, PayPal, and Tahseel (UAE-based) payment gateways,
+                                enabling multi-region payment capabilities across various applications</div>
+                            <div class="pt">Successfully implemented Tahseel Payment Gateway by interpreting complex
+                                documentation, identifying required protocols, and establishing a compliant integration
+                                with robust validation and error handling</div>
+                            <div class="pt">Devised service layers to fetch, process, and normalise data from
+                                CoinMarketCap (CMC) and Molaris APIs for real-time blockchain analytics</div>
+                            <div class="pt">Improved query efficiency by indexing frequently accessed data in MySQL and
+                                MongoDB; implemented Redis caching for static content, enhancing application
+                                responsiveness</div>
+                            <div class="pt">Assembled React components with hooks and Redux to deliver stable state
+                                management and smooth, responsive UI updates</div>
+                            <div class="pt">Deployed and maintained Docker containers across varied environments,
+                                resolving configuration mismatches and ensuring consistent deployments across machines
+                            </div>
+                        </div>
+                        <div class="ei-stack">
+                            <span class="pill">JavaScript</span><span class="pill">Node.js</span><span
+                                class="pill">Express.js</span>
+                            <span class="pill">NestJS</span><span class="pill">MySQL</span><span
+                                class="pill">Sequelize</span>
+                            <span class="pill">MongoDB</span><span class="pill">Ether.js</span><span
+                                class="pill">Docker</span>
+                            <span class="pill">Redis</span><span class="pill">Stripe</span><span
+                                class="pill">PayPal</span><span class="pill">Tahseel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Devsinc -->
+                <div class="ei">
+                    <div class="ei-top">
+                        <div>
+                            <div class="ei-co">Devsinc · Islamabad, Pakistan</div>
+                            <div class="ei-role">Associate Software Engineer (Full Stack Developer)</div>
+                            <div class="ei-loc">Full-Stack Web Development</div>
+                        </div>
+                        <div class="ei-date">Mar 2022 — Dec 2022<br>10 mos</div>
+                    </div>
+                    <div class="ei-body">
+                        <p>Began professional journey in software engineering, contributing to full-stack application
+                            development while building a strong foundation in backend technologies and collaborative
+                            development practices.</p>
+                        <div class="ei-pts">
+                            <div class="pt">Developed RESTful APIs using Node.js and Express.js to support frontend
+                                features and data operations, focusing on scalability, performance, and code readability
+                            </div>
+                            <div class="pt">Implemented secure authentication using token-based auth; applied Joi for
+                                request validation and ensured consistent API responses across services</div>
+                            <div class="pt">Worked with MySQL and Sequelize ORM to manage data using a normalised schema
+                                design, enabling efficient querying and relational integrity</div>
+                            <div class="pt">Built dynamic UI components using React.js, implementing pagination, search,
+                                and filtering for data-rich listing pages</div>
+                            <div class="pt">Debugged and resolved production issues by analysing logs and reproducing
+                                errors in development</div>
+                            <div class="pt">Collaborated with the frontend team to integrate APIs with React components,
+                                ensuring proper data flow and seamless synchronisation</div>
+                            <div class="pt">Created modular and reusable backend services following coding standards and
+                                best practices</div>
+                        </div>
+                        <div class="ei-stack">
+                            <span class="pill">Node.js</span><span class="pill">Express.js</span><span
+                                class="pill">React.js</span>
+                            <span class="pill">MySQL</span><span class="pill">Sequelize</span><span
+                                class="pill">Joi</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SKILLS ── -->
+    <section id="skills"
+        style="border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);position:relative;z-index:10;">
+        <div class="sw">
+            <div class="sh">
+                <span class="sn">03 — Skills &amp; Technologies</span>
+                <h2 class="st">Technical Proficiency</h2>
+                <span class="sr"></span>
+            </div>
+            <div class="sk-wrap">
+
+                <div class="sg">
+                    <div class="sg-t">// Languages &amp; Frameworks</div>
+                    <div class="sk"><span class="sk-n">Node.js</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:95%"></div>
+                        </div><span class="sk-p">95</span>
+                    </div>
+                    <div class="sk"><span class="sk-n">NestJS</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:93%"></div>
+                        </div><span class="sk-p">93</span>
+                    </div>
+                    <div class="sk"><span class="sk-n">Express.js</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:90%"></div>
+                        </div><span class="sk-p">90</span>
+                    </div>
+                    <div class="sk"><span class="sk-n">TypeScript</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:88%"></div>
+                        </div><span class="sk-p">88</span>
+                    </div>
+                    <div class="sk"><span class="sk-n">JavaScript</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:92%"></div>
+                        </div><span class="sk-p">92</span>
+                    </div>
+                    <div class="sk"><span class="sk-n">React.js</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:72%"></div>
+                        </div><span class="sk-p">72</span>
+                    </div>
+                </div>
+
+                <div class="sg">
+                    <div class="sg-t">// Databases &amp; Caching</div>
+                    <div class="sk"><span class="sk-n">PostgreSQL</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:88%"></div>
+                        </div><span class="sk-p">88</span>
+                    </div>
+                    <div class="sk"><span class="sk-n">MongoDB</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:85%"></div>
+                        </div><span class="sk-p">85</span>
+                    </div>
+                    <div class="sk"><span class="sk-n">MySQL</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:83%"></div>
+                        </div><span class="sk-p">83</span>
+                    </div>
+                    <div class="sk"><span class="sk-n">Redis</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:82%"></div>
+                        </div><span class="sk-p">82</span>
+                    </div>
+                    <div class="sk"><span class="sk-n">Sequelize ORM</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:78%"></div>
+                        </div><span class="sk-p">78</span>
+                    </div>
+                </div>
+
+                <div class="sg">
+                    <div class="sg-t">// Payments &amp; Blockchain</div>
+                    <div class="sk"><span class="sk-n">Stripe</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:90%"></div>
+                        </div><span class="sk-p">90</span>
+                    </div>
+                    <div class="sk"><span class="sk-n">PayPal</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:86%"></div>
+                        </div><span class="sk-p">86</span>
+                    </div>
+                    <div class="sk"><span class="sk-n">Ether.js / Smart Contracts</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:80%"></div>
+                        </div><span class="sk-p">80</span>
+                    </div>
+                    <div class="sk"><span class="sk-n">Portone (South Korea)</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:78%"></div>
+                        </div><span class="sk-p">78</span>
+                    </div>
+                    <div class="sk"><span class="sk-n">Tahseel (UAE)</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:75%"></div>
+                        </div><span class="sk-p">75</span>
+                    </div>
+                </div>
+
+                <div class="sg">
+                    <div class="sg-t">// DevOps, Cloud &amp; Tools</div>
+                    <div class="sk"><span class="sk-n">Git</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:92%"></div>
+                        </div><span class="sk-p">92</span>
+                    </div>
+                    <div class="sk"><span class="sk-n">Docker</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:78%"></div>
+                        </div><span class="sk-p">78</span>
+                    </div>
+                    <div class="sk"><span class="sk-n">AWS S3</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:75%"></div>
+                        </div><span class="sk-p">75</span>
+                    </div>
+                    <div class="sk"><span class="sk-n">Postman</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:88%"></div>
+                        </div><span class="sk-p">88</span>
+                    </div>
+                    <div class="sk"><span class="sk-n">DBeaver / VS Code</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:85%"></div>
+                        </div><span class="sk-p">85</span>
+                    </div>
+                    <div class="sk"><span class="sk-n">Redux</span>
+                        <div class="sk-tr">
+                            <div class="sk-f" style="width:70%"></div>
+                        </div><span class="sk-p">70</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section id="contact" class="bg2-strip" style="position:relative;z-index:10;">
+        <div class="sw">
+            <div class="sh">
+                <span class="sn">04 — Contact</span>
+                <h2 class="st">Let's Work Together</h2>
+                <span class="sr"></span>
+            </div>
+            <div class="ct-g">
+                <div>
+                    <p class="ct-lead">Open to backend development roles — remote or on-site. Looking to work on
+                        impactful projects and contribute to high-performing engineering teams.</p>
+                    <a href="mailto:osama.gormani@gmail.com" class="ct-item">
+                        <div class="ct-icon">✉</div>
+                        <div>
+                            <div class="ct-type">Primary Email</div>
+                            <div class="ct-lbl">osama.gormani@gmail.com</div>
+                        </div>
+                    </a>
+                    <a href="mailto:usama.gormani8300@gmail.com" class="ct-item">
+                        <div class="ct-icon">✉</div>
+                        <div>
+                            <div class="ct-type">Alt Email</div>
+                            <div class="ct-lbl">usama.gormani8300@gmail.com</div>
+                        </div>
+                    </a>
+                    <a href="tel:+923367618300" class="ct-item">
+                        <div class="ct-icon">✆</div>
+                        <div>
+                            <div class="ct-type">Mobile</div>
+                            <div class="ct-lbl">+92 336 761 8300</div>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/usamagormani" target="_blank" rel="noopener" class="ct-item">
+                        <div class="ct-icon">in</div>
+                        <div>
+                            <div class="ct-type">LinkedIn</div>
+                            <div class="ct-lbl">linkedin.com/in/usamagormani</div>
+                        </div>
+                    </a>
+                    <div class="ct-item">
+                        <div class="ct-icon">⌖</div>
+                        <div>
+                            <div class="ct-type">Location</div>
+                            <div class="ct-lbl">Islamabad, Pakistan · Open to Remote &amp; On-site</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="why">
+                    <div class="why-t">Core Expertise</div>
+                    <p class="why-b">I specialise in building scalable, production-ready backend systems. From designing
+                        multi-tenant SaaS APIs and integrating international payment gateways, to working with Ethereum
+                        smart contracts and optimising database performance — I bring end-to-end backend ownership and a
+                        strong focus on clean, testable architecture.</p>
+                    <div class="tags">
+                        <span class="tag">RESTful APIs</span>
+                        <span class="tag">Microservices</span>
+                        <span class="tag">Payment Integration</span>
+                        <span class="tag">Blockchain / Ether.js</span>
+                        <span class="tag">Database Optimisation</span>
+                        <span class="tag">Redis Caching</span>
+                        <span class="tag">JWT / RBAC / Auth</span>
+                        <span class="tag">Docker / CI/CD</span>
+                        <span class="tag">AWS S3</span>
+                        <span class="tag">Team Leadership</span>
+                        <span class="tag">Code Reviews</span>
+                        <span class="tag">Remote-Ready</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="position:relative;z-index:10;">
+        <span>© 2025 Usama Bin Sadiq</span>
+        <span>Senior Software Engineer · Islamabad, Pakistan</span>
+    </footer>
+
+    <script>
+        // Nav scroll state
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+        // Hamburger menu
+        const ham = document.getElementById('ham');
+        const mobMenu = document.getElementById('mob-menu');
+        ham.addEventListener('click', () => {
+            ham.classList.toggle('open');
+            mobMenu.classList.toggle('open');
+            document.body.style.overflow = mobMenu.classList.contains('open') ? 'hidden' : '';
+        });
+        // Close on link click
+        document.querySelectorAll('.mob-link, .mob-cta').forEach(a => {
+            a.addEventListener('click', () => {
+                ham.classList.remove('open');
+                mobMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Scroll reveal
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+        }, { threshold: 0.07 });
+        document.querySelectorAll('.ei, .sg').forEach((el, i) => {
+            el.style.transitionDelay = `${(i % 4) * 0.07}s`;
+            io.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const t = document.querySelector(a.getAttribute('href'));
+                if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+            });
+        });
+    </script>
+</body>
+
+</html>
