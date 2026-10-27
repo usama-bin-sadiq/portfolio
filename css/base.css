@@ -56,6 +56,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+a[href],
+button:not(:disabled),
+[role="button"],
+summary {
+  cursor: pointer;
+}
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
