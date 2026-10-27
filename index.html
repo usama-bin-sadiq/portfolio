@@ -1,104 +1,119 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Usama Bin Sadiq — Senior Software Engineer</title>
-  <meta name="description" content="Senior Software Engineer specialising in NestJS, Node.js, TypeScript, and PostgreSQL. 4+ years building production systems across fintech, blockchain, and international SaaS."/>
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Usama Bin Sadiq — Senior Software Engineer</title>
+    <meta
+      name="description"
+      content="Senior Software Engineer specialising in NestJS, Node.js, TypeScript, and PostgreSQL. 4+ years building production systems across fintech, blockchain, and international SaaS."
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
-  <!-- shared styles, section styles, then responsive overrides -->
-  <link rel="stylesheet" href="css/base.css"/>
-  <link rel="stylesheet" href="css/sections/hero.css"/>
-  <link rel="stylesheet" href="css/sections/about.css"/>
-  <link rel="stylesheet" href="css/sections/experience.css"/>
-  <link rel="stylesheet" href="css/sections/skills.css"/>
-  <link rel="stylesheet" href="css/sections/contact.css"/>
-  <link rel="stylesheet" href="css/shared.css"/>
-  <link rel="stylesheet" href="css/skeleton.css"/>
-  <link rel="stylesheet" href="css/responsive.css"/>
-</head>
-<body>
+    <!-- shared styles, section styles, then responsive overrides -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/sections/hero.css" />
+    <link rel="stylesheet" href="css/sections/about.css" />
+    <link rel="stylesheet" href="css/sections/experience.css" />
+    <link rel="stylesheet" href="css/sections/skills.css" />
+    <link rel="stylesheet" href="css/sections/contact.css" />
+    <link rel="stylesheet" href="css/shared.css" />
+    <link rel="stylesheet" href="css/skeleton.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body>
+    <!-- nav (static — always present, no flash) -->
+    <nav id="nav">
+      <a href="#hero" class="nav-logo">Usama <span>Bin Sadiq</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta"><span>Hire Me</span></a>
+      <button class="ham" id="ham" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
 
-  <!-- nav (static — always present, no flash) -->
-  <nav id="nav">
-    <a href="#hero" class="nav-logo">Usama <span>Bin Sadiq</span></a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="#contact" class="nav-cta"><span>Hire Me</span></a>
-    <button class="ham" id="ham" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <!-- mobile menu -->
-  <div class="mob-menu" id="mob-menu">
-    <a href="#about"      class="mob-link">About</a>
-    <a href="#experience" class="mob-link">Experience</a>
-    <a href="#skills"     class="mob-link">Skills</a>
-    <a href="#contact"    class="mob-link">Contact</a>
-    <a href="#contact" class="mob-cta">Hire Me</a>
-  </div>
-
-  <!-- section slots — filled by main.js -->
-  <main>
-    <div id="slot-hero" aria-busy="true">
-      <div class="skeleton-hero" aria-hidden="true">
-        <div class="skeleton-block skeleton-eyebrow"></div>
-        <div class="skeleton-block skeleton-title"></div>
-        <div class="skeleton-block skeleton-title skeleton-title-short"></div>
-        <div class="skeleton-block skeleton-copy"></div>
-        <div class="skeleton-block skeleton-copy"></div>
-        <div class="skeleton-block skeleton-copy skeleton-copy-short"></div>
-        <div class="skeleton-actions"><div class="skeleton-block"></div><div class="skeleton-block"></div></div>
-      </div>
-      <span class="sr-only" role="status">Loading introduction</span>
+    <!-- mobile menu -->
+    <div class="mob-menu" id="mob-menu">
+      <a href="#about" class="mob-link">About</a>
+      <a href="#experience" class="mob-link">Experience</a>
+      <a href="#skills" class="mob-link">Skills</a>
+      <a href="#contact" class="mob-link">Contact</a>
+      <a href="#contact" class="mob-cta">Hire Me</a>
     </div>
-    <div id="slot-about" aria-busy="true">
-      <div class="skeleton-section" aria-hidden="true">
-        <div class="skeleton-block skeleton-eyebrow"></div>
-        <div class="skeleton-block skeleton-heading"></div>
-        <div class="skeleton-columns"><div class="skeleton-panel"></div><div class="skeleton-panel"></div></div>
-      </div>
-      <span class="sr-only" role="status">Loading about section</span>
-    </div>
-    <div id="slot-experience" aria-busy="true">
-      <div class="skeleton-section" aria-hidden="true">
-        <div class="skeleton-block skeleton-eyebrow"></div>
-        <div class="skeleton-block skeleton-heading"></div>
-        <div class="skeleton-panel skeleton-panel-wide"></div>
-        <div class="skeleton-panel skeleton-panel-wide"></div>
-      </div>
-      <span class="sr-only" role="status">Loading experience section</span>
-    </div>
-    <div id="slot-skills" aria-busy="true">
-      <div class="skeleton-section" aria-hidden="true">
-        <div class="skeleton-block skeleton-eyebrow"></div>
-        <div class="skeleton-block skeleton-heading"></div>
-        <div class="skeleton-columns skeleton-skills"><div class="skeleton-panel"></div><div class="skeleton-panel"></div><div class="skeleton-panel"></div></div>
-      </div>
-      <span class="sr-only" role="status">Loading technology section</span>
-    </div>
-    <div id="slot-contact" aria-busy="true">
-      <div class="skeleton-section" aria-hidden="true">
-        <div class="skeleton-block skeleton-eyebrow"></div>
-        <div class="skeleton-block skeleton-heading"></div>
-        <div class="skeleton-columns"><div class="skeleton-panel"></div><div class="skeleton-panel"></div></div>
-      </div>
-      <span class="sr-only" role="status">Loading contact section</span>
-    </div>
-  </main>
 
-  <footer>
-    <span>© <span id="year"></span> Usama Bin Sadiq</span>
-    <span>Software Engineer · Islamabad, Pakistan</span>
-  </footer>
+    <!-- section slots — filled by main.js -->
+    <main>
+      <div id="slot-hero" aria-busy="true">
+        <div class="skeleton-hero" aria-hidden="true">
+          <div class="skeleton-block skeleton-eyebrow"></div>
+          <div class="skeleton-block skeleton-title"></div>
+          <div class="skeleton-block skeleton-title skeleton-title-short"></div>
+          <div class="skeleton-block skeleton-copy"></div>
+          <div class="skeleton-block skeleton-copy"></div>
+          <div class="skeleton-block skeleton-copy skeleton-copy-short"></div>
+          <div class="skeleton-actions">
+            <div class="skeleton-block"></div>
+            <div class="skeleton-block"></div>
+          </div>
+        </div>
+        <span class="sr-only" role="status">Loading introduction</span>
+      </div>
+      <div id="slot-about" aria-busy="true">
+        <div class="skeleton-section" aria-hidden="true">
+          <div class="skeleton-block skeleton-eyebrow"></div>
+          <div class="skeleton-block skeleton-heading"></div>
+          <div class="skeleton-columns">
+            <div class="skeleton-panel"></div>
+            <div class="skeleton-panel"></div>
+          </div>
+        </div>
+        <span class="sr-only" role="status">Loading about section</span>
+      </div>
+      <div id="slot-experience" aria-busy="true">
+        <div class="skeleton-section" aria-hidden="true">
+          <div class="skeleton-block skeleton-eyebrow"></div>
+          <div class="skeleton-block skeleton-heading"></div>
+          <div class="skeleton-panel skeleton-panel-wide"></div>
+          <div class="skeleton-panel skeleton-panel-wide"></div>
+        </div>
+        <span class="sr-only" role="status">Loading experience section</span>
+      </div>
+      <div id="slot-skills" aria-busy="true">
+        <div class="skeleton-section" aria-hidden="true">
+          <div class="skeleton-block skeleton-eyebrow"></div>
+          <div class="skeleton-block skeleton-heading"></div>
+          <div class="skeleton-columns skeleton-skills">
+            <div class="skeleton-panel"></div>
+            <div class="skeleton-panel"></div>
+            <div class="skeleton-panel"></div>
+          </div>
+        </div>
+        <span class="sr-only" role="status">Loading technology section</span>
+      </div>
+      <div id="slot-contact" aria-busy="true">
+        <div class="skeleton-section" aria-hidden="true">
+          <div class="skeleton-block skeleton-eyebrow"></div>
+          <div class="skeleton-block skeleton-heading"></div>
+          <div class="skeleton-columns">
+            <div class="skeleton-panel"></div>
+            <div class="skeleton-panel"></div>
+          </div>
+        </div>
+        <span class="sr-only" role="status">Loading contact section</span>
+      </div>
+    </main>
 
-  <!-- deferred JS -->
-  <script src="js/main.js" defer></script>
-</body>
+    <footer>
+      <span>© <span id="year"></span> Usama Bin Sadiq</span>
+      <span>Software Engineer · Islamabad, Pakistan</span>
+    </footer>
+
+    <!-- deferred JS -->
+    <script src="js/main.js" defer></script>
+  </body>
 </html>
