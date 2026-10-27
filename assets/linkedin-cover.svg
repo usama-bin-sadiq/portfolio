@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1584" height="396" viewBox="0 0 1584 396" fill="none">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1584" y2="396" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#090C12"/>
+      <stop offset=".58" stop-color="#0D131C"/>
+      <stop offset="1" stop-color="#101A27"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="matrix(-550 270 -170 -346 1450 8)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#426287" stop-opacity=".25"/>
+      <stop offset="1" stop-color="#426287" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="785" y1="0" x2="1230" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D4AA4E"/>
+      <stop offset="1" stop-color="#F0CC72"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" stroke="#9BAFC7" stroke-opacity=".055"/>
+    </pattern>
+    <linearGradient id="fade" x1="600" y1="198" x2="1584" y2="198" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset=".2" stop-color="white" stop-opacity=".9"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <mask id="grid-mask">
+      <rect width="1584" height="396" fill="url(#fade)"/>
+    </mask>
+  </defs>
+
+  <rect width="1584" height="396" fill="url(#background)"/>
+  <rect width="1584" height="396" fill="url(#glow)"/>
+  <rect width="1584" height="396" fill="url(#grid)" mask="url(#grid-mask)"/>
+
+  <g opacity=".28" stroke="#D4AA4E">
+    <path d="M1482 65v266"/>
+    <path d="M1482 104h42"/>
+    <path d="M1482 198h66"/>
+    <path d="M1482 292h42"/>
+    <circle cx="1482" cy="104" r="3" fill="#D4AA4E"/>
+    <circle cx="1482" cy="198" r="3" fill="#D4AA4E"/>
+    <circle cx="1482" cy="292" r="3" fill="#D4AA4E"/>
+  </g>
+  <g opacity=".13" stroke="#8EABC9">
+    <path d="M1368 65h114v39"/>
+    <path d="M1398 198h84"/>
+    <path d="M1368 331h114v-39"/>
+  </g>
+
+  <path d="M785 75h34" stroke="url(#gold)" stroke-width="2"/>
+  <text x="834" y="78" fill="#F0CC72" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="1.8">SOFTWARE ENGINEER  ·  ISLAMABAD, PAKISTAN</text>
+
+  <text x="785" y="137" fill="#EDF0F5" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="45" font-weight="600" letter-spacing=".1">Usama Bin Sadiq</text>
+  <text x="787" y="176" fill="#F0CC72" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="22" font-weight="600">Senior Software Engineer</text>
+  <text x="787" y="213" fill="#D3DAE3" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="17" font-weight="400">Building web applications and dependable backend systems.</text>
+
+  <path d="M787 237h644" stroke="#EDF0F5" stroke-opacity=".17"/>
+  <text x="787" y="270" fill="#B7C2D0" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.3">BACKEND</text>
+  <text x="900" y="270" fill="#FFFFFF" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="500">Node.js  ·  NestJS  ·  Express.js  ·  PostgreSQL</text>
+
+  <text x="787" y="309" fill="#B7C2D0" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.3">FRONTEND</text>
+  <text x="900" y="309" fill="#FFFFFF" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="500">React  ·  Next.js  ·  Redux Toolkit  ·  TanStack Query</text>
+
+  <text x="787" y="348" fill="#B7C2D0" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.3">AI TOOLS</text>
+  <text x="900" y="348" fill="#FFFFFF" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="500">Claude Code  ·  OpenAI Codex  ·  Google Antigravity</text>
+  <text x="900" y="375" fill="#FFFFFF" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="500">GitHub Copilot  ·  Cursor</text>
+  <path d="M785 386h646" stroke="url(#gold)" stroke-opacity=".62"/>
+</svg>
