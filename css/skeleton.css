@@ -1,0 +1,34 @@
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skeleton-hero,.skeleton-section{max-width:var(--max);margin:0 auto;padding:110px var(--gutter) 80px}
+.skeleton-hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.skeleton-section{padding-top:96px;padding-bottom:96px}
+.skeleton-block,.skeleton-panel{background:linear-gradient(100deg,var(--bg3) 20%,rgba(255,255,255,.09) 40%,var(--bg3) 60%);background-size:200% 100%;animation:skeleton-shimmer 1.8s ease-in-out infinite}
+.skeleton-block{height:16px;border-radius:4px;margin-bottom:16px}
+.skeleton-eyebrow{width:190px;height:12px;margin-bottom:28px}
+.skeleton-title{width:min(580px,80%);height:clamp(48px,7vw,88px);margin-bottom:12px}
+.skeleton-title-short{width:min(360px,55%);margin-bottom:24px}
+.skeleton-copy{width:min(580px,75%);height:16px}
+.skeleton-copy-short{width:min(390px,52%);margin-bottom:28px}
+.skeleton-heading{width:min(380px,65%);height:38px;margin-bottom:36px}
+.skeleton-actions{display:flex;gap:12px;margin-top:8px}
+.skeleton-actions .skeleton-block{width:150px;height:44px}
+.skeleton-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.skeleton-panel{min-height:210px;border:1px solid var(--bdr);border-radius:4px}
+.skeleton-panel-wide{min-height:180px;margin-bottom:14px}
+.skeleton-skills{grid-template-columns:repeat(3,minmax(0,1fr))}
+.skeleton-skills .skeleton-panel{min-height:150px}
+.section-load-error{max-width:var(--max);margin:40px auto;padding:24px var(--gutter);color:var(--t2)}
+.section-load-error p{margin-bottom:12px}
+@keyframes skeleton-shimmer{to{background-position:-200% 0}}
+
+@media(max-width:768px){
+  .skeleton-hero{min-height:auto;padding:100px var(--gutter) 64px}
+  .skeleton-section{padding:64px var(--gutter)}
+  .skeleton-columns{grid-template-columns:1fr}
+  .skeleton-skills{grid-template-columns:1fr 1fr}
+  .skeleton-panel{min-height:150px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .skeleton-block,.skeleton-panel{animation:none}
+}

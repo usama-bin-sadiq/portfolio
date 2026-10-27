@@ -1,0 +1,69 @@
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+
+/* Tablet ≤ 1024px */
+@media(max-width:1024px){
+  :root{--gutter:36px}
+  .nav-links{gap:26px}
+  .hero-wrap{grid-template-columns:1fr;gap:44px}
+  .about-g{grid-template-columns:1fr;gap:44px}
+  .ct-g{grid-template-columns:1fr;gap:44px}
+  .sk-grid{grid-template-columns:1fr 1fr}
+  .ei-pts{grid-template-columns:1fr}
+}
+
+/* Mobile ≤ 768px */
+@media(max-width:768px){
+  :root{--gutter:20px}
+  nav{height:62px;padding:0 var(--gutter)}
+  .nav-links,.nav-cta{display:none}
+  .ham{display:flex}
+  .mob-menu{display:flex;top:62px}
+  #hero{padding:88px var(--gutter) 56px;min-height:auto}
+  .hero-wrap{gap:32px}
+  h1{font-size:clamp(2.4rem,9vw,3.6rem)}
+  .h-role{letter-spacing:.3px;font-size:.8rem}
+  .h-desc{font-size:.98rem}
+  .sw{padding:64px var(--gutter)}
+  .sh{margin-bottom:40px}
+  .about-g{grid-template-columns:1fr;gap:36px}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat{padding:22px 16px}
+  .stat-n{font-size:2.4rem}
+  .ei-top{grid-template-columns:1fr;padding:22px 20px 14px}
+  .ei-date{text-align:left;display:inline-block;margin-top:8px}
+  .ei-body{padding:0 20px 22px}
+  .ei-pts{grid-template-columns:1fr}
+  .sk-grid{grid-template-columns:1fr}
+  .sg{padding:24px 20px}
+  .ct-g{grid-template-columns:1fr;gap:32px}
+  .ct-stack-card{padding:24px 20px}
+  footer{padding:20px var(--gutter);flex-direction:column;text-align:center;gap:6px}
+  .h-btns{flex-direction:column}
+  .btn-gold,.btn-ghost{text-align:center;width:100%}
+}
+
+/* Small mobile ≤ 480px */
+@media(max-width:480px){
+  :root{--gutter:16px}
+  h1{font-size:clamp(2.1rem,8vw,3rem)}
+  .h-role{font-size:.76rem;letter-spacing:.2px}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat{padding:18px 14px}
+  .stat-n{font-size:2rem}
+  .edu{padding:18px 18px 18px 20px}
+  .ei-top{padding:18px 16px 12px}
+  .ei-body{padding:0 16px 18px}
+  .sg{padding:20px 16px}
+  .ct-stack-card{padding:20px 16px}
+  .sk-grid{grid-template-columns:1fr}
+  footer{padding:18px var(--gutter)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal,.reveal.in{animation:none!important;opacity:1!important;transform:none!important}
+  .ei,.sg{opacity:1;transform:none}
+}
