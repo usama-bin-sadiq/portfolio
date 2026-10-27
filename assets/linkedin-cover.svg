@@ -31,36 +31,38 @@
   <rect width="1584" height="396" fill="url(#grid)" mask="url(#grid-mask)"/>
 
   <g opacity=".28" stroke="#D4AA4E">
-    <path d="M1482 65v266"/>
-    <path d="M1482 104h42"/>
-    <path d="M1482 198h66"/>
-    <path d="M1482 292h42"/>
-    <circle cx="1482" cy="104" r="3" fill="#D4AA4E"/>
-    <circle cx="1482" cy="198" r="3" fill="#D4AA4E"/>
-    <circle cx="1482" cy="292" r="3" fill="#D4AA4E"/>
+    <path d="M1542 65v266"/>
+    <path d="M1542 104h42"/>
+    <path d="M1542 198h42"/>
+    <path d="M1542 292h42"/>
+    <circle cx="1542" cy="104" r="3" fill="#D4AA4E"/>
+    <circle cx="1542" cy="198" r="3" fill="#D4AA4E"/>
+    <circle cx="1542" cy="292" r="3" fill="#D4AA4E"/>
   </g>
   <g opacity=".13" stroke="#8EABC9">
-    <path d="M1368 65h114v39"/>
-    <path d="M1398 198h84"/>
-    <path d="M1368 331h114v-39"/>
+    <path d="M1428 65h114v39"/>
+    <path d="M1458 198h84"/>
+    <path d="M1428 331h114v-39"/>
   </g>
 
-  <path d="M785 75h34" stroke="url(#gold)" stroke-width="2"/>
-  <text x="834" y="78" fill="#F0CC72" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="1.8">SOFTWARE ENGINEER  ·  ISLAMABAD, PAKISTAN</text>
+  <g transform="translate(120 0)">
+    <path d="M785 75h34" stroke="url(#gold)" stroke-width="2"/>
+    <text x="834" y="78" fill="#F0CC72" font-family="Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="500" letter-spacing="1.5">SOFTWARE ENGINEER  ·  ISLAMABAD, PAKISTAN</text>
 
-  <text x="785" y="137" fill="#EDF0F5" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="45" font-weight="600" letter-spacing=".1">Usama Bin Sadiq</text>
-  <text x="787" y="176" fill="#F0CC72" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="22" font-weight="600">Senior Software Engineer</text>
-  <text x="787" y="213" fill="#D3DAE3" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="17" font-weight="400">Building web applications and dependable backend systems.</text>
+    <text x="785" y="137" fill="#EDF0F5" font-family="Helvetica Neue, Arial, sans-serif" font-size="46" font-weight="500" letter-spacing=".1">Usama Bin Sadiq</text>
+    <text x="787" y="176" fill="#F0CC72" font-family="Helvetica Neue, Arial, sans-serif" font-size="23" font-weight="500">Senior Software Engineer</text>
+    <text x="787" y="213" fill="#D3DAE3" font-family="Helvetica Neue, Arial, sans-serif" font-size="18" font-weight="400">Building web applications and dependable backend systems.</text>
 
-  <path d="M787 237h644" stroke="#EDF0F5" stroke-opacity=".17"/>
-  <text x="787" y="270" fill="#B7C2D0" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.3">BACKEND</text>
-  <text x="900" y="270" fill="#FFFFFF" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="500">Node.js  ·  NestJS  ·  Express.js  ·  PostgreSQL</text>
+    <path d="M787 237h625" stroke="#EDF0F5" stroke-opacity=".17"/>
+    <text x="787" y="270" fill="#C5CED9" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="500" letter-spacing="1">BACKEND</text>
+    <text x="900" y="270" fill="#FFFFFF" font-family="Helvetica Neue, Arial, sans-serif" font-size="17" font-weight="400">Node.js  ·  NestJS  ·  Express.js  ·  PostgreSQL</text>
 
-  <text x="787" y="309" fill="#B7C2D0" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.3">FRONTEND</text>
-  <text x="900" y="309" fill="#FFFFFF" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="500">React  ·  Next.js  ·  Redux Toolkit  ·  TanStack Query</text>
+    <text x="787" y="309" fill="#C5CED9" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="500" letter-spacing="1">FRONTEND</text>
+    <text x="900" y="309" fill="#FFFFFF" font-family="Helvetica Neue, Arial, sans-serif" font-size="17" font-weight="400">React  ·  Next.js  ·  Redux Toolkit  ·  TanStack Query</text>
 
-  <text x="787" y="348" fill="#B7C2D0" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.3">AI TOOLS</text>
-  <text x="900" y="348" fill="#FFFFFF" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="500">Claude Code  ·  OpenAI Codex  ·  Google Antigravity</text>
-  <text x="900" y="375" fill="#FFFFFF" font-family="Avenir, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="500">GitHub Copilot  ·  Cursor</text>
-  <path d="M785 386h646" stroke="url(#gold)" stroke-opacity=".62"/>
+    <text x="787" y="348" fill="#C5CED9" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="500" letter-spacing="1">AI TOOLS</text>
+    <text x="900" y="348" fill="#FFFFFF" font-family="Helvetica Neue, Arial, sans-serif" font-size="17" font-weight="400">Claude Code  ·  OpenAI Codex  ·  Google Antigravity</text>
+    <text x="900" y="375" fill="#FFFFFF" font-family="Helvetica Neue, Arial, sans-serif" font-size="17" font-weight="400">GitHub Copilot  ·  Cursor</text>
+    <path d="M785 386h625" stroke="url(#gold)" stroke-opacity=".62"/>
+  </g>
 </svg>
